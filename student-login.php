@@ -1,48 +1,46 @@
 <?php
 session_start();
 
-// DB connection info
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "CBC_POINT_DEDUCTION_SYSTEM";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Only allow POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    die("<h3 style='color:red; text-align:center;'>Invalid request method.</h3>");
 }
 
-// Handle login form submission
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $studentID = trim($_POST['studentID']);
-    $enteredPassword = trim($_POST['password']);  // renamed for clarity
+// Connect to DB
+$conn = mysqli_connect("localhost", "root", "", "CBC_POINT_DEDUCTION_SYSTEM");
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
-    // Query the student table
-    $query = "SELECT * FROM student WHERE student_ID = '$studentID'";
-    $result = mysqli_query($conn, $query);
+// Grab POST values (names must match your form)
+$studentID = isset($_POST['studentID']) ? trim($_POST['studentID']) : '';
+$password  = isset($_POST['password'])  ? trim($_POST['password'])  : '';
 
-    if (mysqli_num_rows($result) === 1) {
-        $student = mysqli_fetch_assoc($result);
+// Validate input
+if ($studentID === '' || $password === '') {
+    die("<h3 style='color:red; text-align:center;'>❌ Please enter both Student ID and Password.</h3>");
+}
 
-        if ($student['password'] == $enteredPassword) {
-            // Save data to session
-            $_SESSION['student_ID'] = $student['student_ID'];
-            $_SESSION['S_name'] = $student['S_name'];
+// Query for that student
+$sql    = "SELECT * FROM student WHERE student_ID = '$studentID'";
+$result = mysqli_query($conn, $sql) or die("Query failed: " . mysqli_error($conn));
 
-            header("Location: student-dashboard.php");
-            exit();
-        } else {
-            echo "<h3 style='color:red; text-align:center;'>❌ Incorrect password</h3>";
-        }
+if (mysqli_num_rows($result) === 1) {
+    $student = mysqli_fetch_assoc($result);
+
+    // Check password
+    if ($student['password'] == $password) {
+        // Success: store session and redirect
+        $_SESSION['student_ID'] = $student['student_ID'];
+        $_SESSION['S_name']     = $student['S_name'];
+        header("Location: student-dashboard.php");
+        exit();
     } else {
-        echo "<h3 style='color:red; text-align:center;'>❌ Student ID not found</h3>";
+        echo "<h3 style='color:red; text-align:center;'>❌ Incorrect password.</h3>";
     }
-
-    mysqli_close($conn);
 } else {
-    echo "<h3 style='color:red; text-align:center;'>Invalid request</h3>";
+    echo "<h3 style='color:red; text-align:center;'>❌ Student ID not found.</h3>";
 }
+
+mysqli_close($conn);
 ?>

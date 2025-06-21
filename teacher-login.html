@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher Login</title>
+  <link rel="stylesheet" href="teacher.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <h2>Teacher Login</h2>
+    <form action="teacher-login.php" method="POST">
+      <label for="teacherID">Teacher ID:</label><br>
+      <input type="text" id="teacherID" name="teacherID" required><br><br>
+
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" required><br><br>
+
+      <input type="submit" value="Login" class="btn">
+    </form>
+
+    <!-- 👇 Back to home button -->
+    <a href="index.html" class="btn back-btn">← Back to Home</a>
+    
+  </div>
+  
+</body>
+</html>
