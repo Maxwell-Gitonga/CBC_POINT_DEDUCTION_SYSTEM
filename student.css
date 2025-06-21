@@ -1,0 +1,70 @@
+/* Apply to the whole page */
+body {
+  margin: 0;
+  padding: 0;
+  background: url('images/healthy environment.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+}
+
+/* Main content box */
+.dashboard-container {
+  width: 90%;
+  max-width: 400px;
+  margin: 80px auto;
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Heading */
+h2 {
+  color: #28a745;
+  margin-bottom: 25px;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+/* Submit button */
+input[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #218838;
+}
+
+/* Back to Home button */
+a.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ccc;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+a.btn:hover {
+  background-color: #999;
+}
