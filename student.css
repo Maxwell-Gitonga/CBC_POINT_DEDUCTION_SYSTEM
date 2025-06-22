@@ -2,10 +2,10 @@
 body {
   margin: 0;
   padding: 0;
-  background: url('images/healthy environment.jpeg') no-repeat center center fixed;
+  
   background-size: cover;
   font-family: Arial, sans-serif;
-  background: #f2f2f2;
+  background: linear-gradient(to right, #442e3f, #854b86);;
 }
 
 /* Main content box */

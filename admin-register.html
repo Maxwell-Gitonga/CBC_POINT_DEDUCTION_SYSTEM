@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register New Admin</title>
+  <link rel="stylesheet" href="admin-register.css">
+</head>
+<body>
+  <div class="admin-container">
+    <h2>Register Admin Account</h2>
+
+    <form action="admin-register.php" method="POST">
+      <label for="admin_ID">Admin ID:</label>
+      <input type="number" id="admin_ID" name="admin_ID" required>
+
+      <label for="A_name">Full Name:</label>
+      <input type="text" id="A_name" name="A_name" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="role">Role:</label>
+      <select id="role" name="role">
+        <option value="super">Super Admin</option>
+        <option value="viewer">Viewer</option>
+      </select>
+
+      <button type="submit" class="btn">Create Admin</button>
+    </form>
+
+    <a href="index.html" class="back-link">← Back to Home</a>
+    <div class="top-nav">
+  <a href="admin-login.html" class="nav-btn">Admin Login</a>
+    <a href="admin-register-users.html" class="nav-btn">Register Users</a>
+  </div>
+
+  </div>
+</body>
+</html>

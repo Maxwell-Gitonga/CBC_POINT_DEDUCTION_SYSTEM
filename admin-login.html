@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <div class="admin-container">
+    <h2>Admin Login</h2>
+
+    <form action="admin-login.php" method="POST">
+      <label for="admin_ID">Admin ID:</label>
+      <input type="number" id="admin_ID" name="admin_ID" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" class="btn">Login</button>
+    </form>
+
+    <a href="index.html" class="back-link">← Back to Home</a>
+     <div class="top-nav">
+  <a href="admin-register.html" class="nav-btn">Admin Register</a>
+  </div>
+  </div>
+
+</body>
+</html>
