@@ -25,6 +25,8 @@ $adminName = $_SESSION['A_name'];
     <div class="dashboard-menu">
       <a href="view-students.php" class="dashboard-link">📋 View All Students</a>
       <a href="view-parents.php" class="dashboard-link">👪 View Parents</a>
+      <a href="link-parent-student.php" class="dashboard-link">🔗 Link Parent to Student</a>
+      <a href="view-parent-links.php" class="dashboard-link">🔗 View Parent-Student Links</a>
       <a href="view-teachers.php" class="dashboard-link">👩‍🏫 View Teachers</a>
       <a href="view-conduct.php" class="dashboard-link">⚠️ View Conduct Logs</a>
       <a href="view-rules.php" class="dashboard-link">📜 View/Manage Rules</a>

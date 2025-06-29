@@ -13,7 +13,7 @@ if (!$conn) {
 }
 
 // Get values
-$email = trim($_POST['email']);
+$email = trim($_POST['P_email']);
 $password = trim($_POST['password']);
 
 if ($email === '' || $password === '') {
