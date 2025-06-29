@@ -13,7 +13,7 @@ if (!$conn) {
 }
 
 // Grab POST values (names must match your form)
-$studentID = isset($_POST['studentID']) ? trim($_POST['studentID']) : '';
+$studentID = isset($_POST['student_ID']) ? trim($_POST['student_ID']) : '';
 $password  = isset($_POST['password'])  ? trim($_POST['password'])  : '';
 
 // Validate input
