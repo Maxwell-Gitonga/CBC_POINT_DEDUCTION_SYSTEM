@@ -6,8 +6,9 @@ if ($conn->connect_error) {
 }
 
 // Get form data
-$admin_ID = $_POST['admin_ID'];
+
 $name     = trim($_POST['A_name']);
+$email    = trim($_POST['A_email']);
 $password = trim($_POST['password']);
 $role     = $_POST['role'];
 
@@ -15,8 +16,8 @@ $role     = $_POST['role'];
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 // Insert into database
-$query = "INSERT INTO admin (admin_ID, A_name, password, role)
-          VALUES ('$admin_ID', '$name', '$hashedPassword', '$role')";
+$query = "INSERT INTO admin ( A_name,A_email, password, role)
+          VALUES ( '$name', '$email','$hashedPassword', '$role')";
 
 if ($conn->query($query) === TRUE) {
     echo "<p style='color:green; text-align:center; font-weight:bold;'>✅ Admin account created successfully!</p>";

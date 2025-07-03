@@ -20,14 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $OffenceDescription = trim($_POST['OffenceDescription']);
     $offenceDate = date("Y-m-d");
 
-    // Get rule details (offense type + points to deduct)
+    // Get rule details
     $ruleQuery = "SELECT * FROM ruleset WHERE rule_ID = '$ruleID'";
     $ruleResult = mysqli_query($conn, $ruleQuery);
 
     if ($ruleResult && mysqli_num_rows($ruleResult) === 1) {
         $rule = mysqli_fetch_assoc($ruleResult);
         $points = $rule['pointsToDeduct'];
-        // $offense = $rule['offenseType']; // Not used in insert
 
         // Insert into conduct_record
         $insertQuery = "
@@ -43,6 +42,38 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             mysqli_query($conn, $updateQuery);
 
             echo "<p style='color:green; font-weight:bold;'>✅ Conduct record submitted and student score updated.</p>";
+
+            // Fetch student name
+            $studentQuery = "SELECT S_name FROM student WHERE student_ID = '$student_ID'";
+            $studentResult = mysqli_query($conn, $studentQuery);
+            $student = mysqli_fetch_assoc($studentResult);
+            $studentName = $student['S_name'];
+
+            // Get all linked parents
+            $parentQuery = "
+                SELECT P_name, P_email 
+                FROM parent 
+                JOIN parent_student ON parent.parent_ID = parent_student.parent_ID 
+                WHERE parent_student.student_ID = '$student_ID'
+            ";
+            $parentResult = mysqli_query($conn, $parentQuery);
+
+            while ($parent = mysqli_fetch_assoc($parentResult)) {
+                $to = $parent['P_email'];
+                $subject = "CBC Alert: New Conduct Entry for $studentName";
+                $message = "Dear {$parent['P_name']},\n\n" .
+                           "An offense has been recorded for your child, $studentName.\n" .
+                           "Description: $OffenceDescription\n" .
+                           "Points Deducted: $points\n" .
+                           "Date: $offenceDate\n\n" .
+                           "Please log in to the CBC portal to view full records.\n\n" .
+                           "- CBC Point Deduction System";
+                $headers = "From: no-reply@cbc-system.test";
+
+                // Send the email
+                mail($to, $subject, $message, $headers);
+            }
+
             echo "<a href='teacher-dashboard.php'>← Back to Dashboard</a>";
         } else {
             echo "<p style='color:red;'>❌ Failed to insert conduct record.</p>";

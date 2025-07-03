@@ -39,15 +39,21 @@ $conductResult = mysqli_query($conn, $conductSQL) or die("Conduct query failed: 
     <div class="status-box">
       <p><strong>Class:</strong> <?php echo htmlspecialchars($student['S_class']); ?></p>
       <p><strong>Score:</strong> <?php echo $student['S_score']; ?></p>
-      <p><strong>Status:</strong>
-        <?php
-          $score = $student['S_score'];
-          if ($score >= 80)      echo "<span class='status-active'>Active</span>";
-          elseif ($score >= 60)  echo "<span class='status-warning'>Warning</span>";
-          elseif ($score >= 40)  echo "<span class='status-suspended'>Suspended</span>";
-          else                   echo "<span class='status-barred'>Barred</span>";
-        ?>
-      </p>
+    <p><strong>Status:</strong>
+  <?php
+    $score = $student['S_score'];
+    if ($score >= 80) {
+        echo "<span class='status-active'>Active</span>";
+    } elseif ($score >= 60) {
+        echo "<span class='status-warning'>Warning</span>";
+    } elseif ($score >= 40) {
+        echo "<span class='status-suspended'>Suspended</span>";
+    } else {
+        echo "<span class='status-barred'>Barred from Exams</span>";
+    }
+  ?>
+</p>
+
     </div>
 
     <h2>Conduct Log</h2>

@@ -3,13 +3,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f3f3f3;
+   background: linear-gradient(to right, #6f567e, #8f48a2);
 }
 
 .admin-container {
   max-width: 700px;
   margin: 60px auto;
-  background-color: white;
+  background-color: rgb(120, 117, 164);
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);

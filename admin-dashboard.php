@@ -23,6 +23,7 @@ $adminName = $_SESSION['A_name'];
     <h1>Welcome, <?php echo htmlspecialchars($adminName); ?> 👨‍💼</h1>
 
     <div class="dashboard-menu">
+      <a href="admin-register.html" class="nav-btn">Register Admin</a>
       <a href="admin-register-users.html" class="nav-btn">Register Users</a>
       <a href="view-students.php" class="dashboard-link">📋 View All Students</a>
       <a href="view-parents.php" class="dashboard-link">👪 View Parents</a>

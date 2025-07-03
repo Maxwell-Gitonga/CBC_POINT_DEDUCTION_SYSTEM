@@ -10,11 +10,13 @@
     <h2>Register Admin Account</h2>
 
     <form action="admin-register.php" method="POST">
-      <label for="admin_ID">Admin ID:</label>
-      <input type="number" id="admin_ID" name="admin_ID" required>
+      
 
       <label for="A_name">Full Name:</label>
       <input type="text" id="A_name" name="A_name" required>
+
+       <label for="A_email">Email Account:</label>
+      <input type="text" id="A_email" name="A_email" required>
 
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" required>
@@ -27,10 +29,25 @@
 
       <button type="submit" class="btn">Create Admin</button>
     </form>
+<style>
+.dashboard-link {
+      margin-top: 20px;
+      display: inline-block;
+      background-color: #2e8b57;
+      padding: 12px 20px;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      
+    }
 
-    <a href="index.html" class="back-link">← Back to Home</a>
+    .dashboard-link:hover {
+      background-color: #246c46;
+    }
+</style>
+    <a href="admin-dashboard.php" class="dashboard-link">← Back to Dashboard</a>
     <div class="top-nav">
-  <a href="admin-login.html" class="nav-btn">Admin Login</a>
+  <a href="index.html" class="nav-btn">Home</a>
     
   </div>
 
