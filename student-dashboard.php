@@ -47,7 +47,7 @@ $conductResult = mysqli_query($conn, $conductSQL) or die("Conduct query failed: 
     } elseif ($score >= 60) {
         echo "<span class='status-warning'>Warning</span>";
     } elseif ($score >= 40) {
-        echo "<span class='status-suspended'>Suspended</span>";
+        echo "<span class='status-suspended'>Suspension</span>";
     } else {
         echo "<span class='status-barred'>Barred from Exams</span>";
     }

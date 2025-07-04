@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parent Notifications</title>
+  <link rel="stylesheet" href="parent.css"> <!-- Optional: style file -->
+</head>
+<body>
+  <div class="parent-container">
+    <h1>📬 Notifications</h1>
+
+    <form action="notification.php" method="POST">
+      <label for="parent_ID">Enter Parent ID:</label>
+      <input type="number" name="parent_ID" required>
+      <button type="submit" class="btn">View Notifications</button>
+    </form>
+
+    <br>
+    <a href="parent-dashboard.php" class="btn">← Back to Dashboard</a>
+  </div>
+</body>
+</html>

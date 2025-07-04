@@ -70,6 +70,7 @@ $result = mysqli_query($conn, $sql);
 
     <br>
     <a href="parent-login.html" class="btn">← Logout</a>
+    <a href="notification.html" class="btn">📬 Notifications</a>
   </div>
 </body>
 </html>
