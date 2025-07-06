@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             // Get all linked parents
             $parentQuery = "
-                SELECT P_name, P_email 
+                SELECT parent.parent_ID, P_name, P_email 
                 FROM parent 
                 JOIN parent_student ON parent.parent_ID = parent_student.parent_ID 
                 WHERE parent_student.student_ID = '$student_ID'
@@ -70,8 +70,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                            "- CBC Point Deduction System";
                 $headers = "From: no-reply@cbc-system.test";
 
-                // Send the email
+                // Send email
                 mail($to, $subject, $message, $headers);
+
+                // Insert into notification table
+                $insertNotif = "
+                  INSERT INTO notification (student_ID, parent_ID, message, date_sent)
+                  VALUES ('$student_ID', '{$parent['parent_ID']}', 
+                    'Offense for $studentName: $OffenceDescription. Points: $points.', 
+                    CURDATE()
+                  )
+                ";
+                mysqli_query($conn, $insertNotif);
             }
 
             echo "<a href='teacher-dashboard.php'>← Back to Dashboard</a>";
