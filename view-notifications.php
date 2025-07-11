@@ -137,6 +137,7 @@ $logsResult = mysqli_query($conn, $logsQuery);
     ?>
 
     <br><a href="parent-dashboard.php" class="btn">← Back to Dashboard</a>
+    <a href="download-parent-report.php" class="btn">📥 Download Report</a>
   </div>
 </body>
 </html>

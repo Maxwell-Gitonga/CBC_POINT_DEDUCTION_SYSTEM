@@ -26,6 +26,7 @@ $adminName = $_SESSION['A_name'];
       <a href="admin-register.html" class="nav-btn">Register Admin</a>
       <a href="admin-register-users.html" class="nav-btn">Register Users</a>
       <a href="view-students.php" class="dashboard-link">📋 View All Students</a>
+      <a href="download-admin-report.php" class="dashboard-link">📥 Download Student Conduct Report</a>
       <a href="view-parents.php" class="dashboard-link">👪 View Parents</a>
       <a href="link-parent-student.php" class="dashboard-link">🔗 Link Parent to Student</a>
       <a href="view-parent-links.php" class="dashboard-link">🔗 View Parent-Student Links</a>
@@ -33,6 +34,7 @@ $adminName = $_SESSION['A_name'];
       <a href="view-conduct.php" class="dashboard-link">⚠️ View Conduct Logs</a>
       <a href="view-rules.php" class="dashboard-link">📜 View/Manage Rules</a>
       <a href="admin-login.html" class="dashboard-link logout">← Back to Admin</a>
+      
     </div>
   </div>
 </body>
